@@ -1,0 +1,22 @@
+<h2>New book</h2>
+
+<% if @new_book.errors.any? %>
+  <%= @new_book.errors.count %>error prohibited this obj from being saved:
+  <ul>
+    <% @new_book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: book, class: 'w-100' do |f| %>
+  <div class="form-group">
+    <h6>Title</h6>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <h6>Opinion</h6>
+    <%= f.text_area :body , class: 'form-control'%>
+  </div>
+  <%= f.submit 'Create Book', class: "btn btn-success" %>
+<% end %>
